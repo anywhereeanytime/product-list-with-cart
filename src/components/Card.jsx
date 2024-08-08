@@ -8,9 +8,11 @@ import "./../../src/index.css";
 
 const Card = ({ id, image, subtitle, maintitle, price }) => {
   const dispatch = useDispatch();
+
   const isAdded = useSelector((state) =>
     state.cart.items.some((item) => item.id === id)
   );
+  console.log("Item ID:", id, "Is Added:", isAdded);
 
   const handleAddToCart = () => {
     dispatch(addItem({ id, image, subtitle, maintitle, price }));

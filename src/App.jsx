@@ -1,19 +1,29 @@
 import "./index.css";
-import data from './data.json';
+import data from "./.././data.json";
 import Card from "./components/Card";
-import waffleWithBerries from "./../assets/images/image-waffle-desktop.jpg";
+import Cart from "./components/Cart";
 
 function App() {
   return (
-    <>
-      <Card
-        image={waffleWithBerries}
-        cartIcon={}
-        subtitle="Waffle"
-        maintitle="Waffle with berries"
-        price="$5.50"
-      />
-    </>
+    <div className=" bg-customRose100 grid grid-cols-1 md:grid-cols-[70%_30%] md:p-5">
+      <h1 className="text-4xl font-bold p-5 md:col-start-1 md:col-end-2">
+        Desserts
+      </h1>
+      <section className="p-5 pt-0 grid grid-cols-1 gap-4 md:grid-cols-3 md:col-start-1 md:row-start-2 md:col-end-2">
+        {data.map((item, index) => (
+          <Card
+            key={index}
+            image={item.image.desktop}
+            subtitle={item.category}
+            maintitle={item.name}
+            price={`$${item.price.toFixed(2)}`}
+          />
+        ))}
+      </section>
+      <div className="md:col-start-2 md:row-start-1 md:row-span-2 md:mt-8 flex justify-center items-start">
+        <Cart />
+      </div>
+    </div>
   );
 }
 

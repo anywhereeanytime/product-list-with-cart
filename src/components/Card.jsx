@@ -33,20 +33,24 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
         onClick={isAdded ? handleRemoveFromCart : handleAddToCart}
         className={` ${
           isAdded
-            ? "bg-customRed text-white py-2 px-3 rounded-full"
-            : "flex items-center gap-2 font-semibold text-lg border border-customRose900  rounded-full py-2 px-3 absolute z-10 bottom-[5.25rem] left-1/2 -translate-x-1/2 bg-white text-nowrap min-w-fit"
+            ? "bg-customRed py-2 px-3 rounded-full flex gap-2 font-semibold text-lg border absolute z-10 bottom-[5.25rem] left-1/2 -translate-x-1/2 text-nowrap min-w-fit"
+            : "flex items-center gap-2 font-semibold text-lg border border-customRose900 rounded-full py-2 px-3 absolute z-10 bottom-[5.25rem] left-1/2 -translate-x-1/2 bg-white text-nowrap min-w-fit"
         }`}
       >
         {isAdded ? (
-          <>
+          <div className="flex justify-between gap-9 items-center text-gray-50 text-opacity-90">
             <img
-              className="border-1 border-white rounded-full"
+              src={iconDecrement}
+              className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full"
+              alt="Cart icon"
+            />
+            1
+            <img
+              className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full"
               src={iconIncrement}
               alt="Cart icon"
             />
-            <img src={iconDecrement} alt="Cart icon" />
-            Remove from cart
-          </>
+          </div>
         ) : (
           <>
             <img src={cartIcon} alt="Cart icon" />

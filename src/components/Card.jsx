@@ -9,16 +9,34 @@ import "./../../src/index.css";
 const Card = ({ id, image, subtitle, maintitle, price }) => {
   const dispatch = useDispatch();
 
+  // Определяем, добавлен ли товар в корзину
   const isAdded = useSelector((state) =>
     state.cart.items.some((item) => item.id === id)
   );
-  console.log("Item ID:", id, "Is Added:", isAdded);
 
+  // Создаем состояние для количества элементов в корзине
+  const [quantity, setQuantity] = useState(1);
+
+  // Обработчик добавления в корзину
   const handleAddToCart = () => {
-    dispatch(addItem({ id, image, subtitle, maintitle, price }));
+    const numericPrice = parseFloat(price.replace("$", "")); // Преобразуем цену в число
+
+    if (!isAdded) {
+      setQuantity(1);
+    } else {
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
+
+    dispatch(addItem({ id, image, subtitle, maintitle, price: numericPrice }));
   };
 
+  // Обработчик удаления из корзины
   const handleRemoveFromCart = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    } else {
+      setQuantity(1); // Минимальное количество — 1
+    }
     dispatch(removeItem({ id }));
   };
 
@@ -31,8 +49,7 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
         src={image}
         alt="Dessert Image"
       />
-      <button
-        onClick={isAdded ? handleRemoveFromCart : handleAddToCart}
+      <div
         className={` ${
           isAdded
             ? "bg-customRed py-2 px-3 rounded-full flex gap-2 font-semibold text-lg border absolute z-10 bottom-[5.25rem] left-1/2 -translate-x-1/2 text-nowrap min-w-fit"
@@ -41,25 +58,30 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
       >
         {isAdded ? (
           <div className="flex justify-between gap-9 items-center text-gray-50 text-opacity-90">
-            <img
-              src={iconDecrement}
-              className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full"
-              alt="Cart icon"
-            />
-            1
-            <img
-              className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full"
-              src={iconIncrement}
-              alt="Cart icon"
-            />
+            <span onClick={handleRemoveFromCart} role="button" tabIndex={0}>
+              <img
+                src={iconDecrement}
+                className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full cursor-pointer"
+                alt="Decrease quantity"
+              />
+            </span>
+            {quantity}
+            <span onClick={handleAddToCart} role="button" tabIndex={0}>
+              <img
+                src={iconIncrement}
+                className="w-5 h-5 p-1 border-2 border-gray-50 border-opacity-80 rounded-full cursor-pointer"
+                alt="Increase quantity"
+              />
+            </span>
           </div>
         ) : (
-          <>
+          <button onClick={handleAddToCart} className="flex items-center gap-2">
             <img src={cartIcon} alt="Cart icon" />
             Add to cart
-          </>
+          </button>
         )}
-      </button>
+      </div>
+
       <p className="font-normal text-customRose400">{subtitle}</p>
       <h4 className="text-lg font-bold">{maintitle}</h4>
       <p className="font-bold text-customRed">{price}</p>

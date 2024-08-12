@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem } from "./../cartSlice";
 import emptyCartImg from "./../../assets/images/illustration-empty-cart.svg";
 import removeItemIcon from "./../../assets/images/icon-remove-item.svg";
 import carbonNeutralIcon from "./../../assets/images/icon-carbon-neutral.svg";
+import OrderConfirmationModal from "./OrderConfirmationModal";
 
 const Cart = () => {
   const items = useSelector((state) => state.cart.items);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
   const dispatch = useDispatch();
 
-  const totalAmount = items
-    .reduce((acc, item) => acc + (item.price * item.quantity || 0), 0)
-    .toFixed(2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleConfirmOrder = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="bg-slate-100 flex flex-col gap-3 p-6 rounded-md md:w-5/6 mx-auto">
@@ -80,9 +88,17 @@ const Cart = () => {
             </p>
           </div>
           <div className="flex justify-center mt-4">
-            <button className="bg-customRed  text-white font-bold rounded-3xl  px-8 py-3 text-lg w-full">
+            <button
+              onClick={handleConfirmOrder}
+              className="bg-customRed  text-white font-bold rounded-3xl  px-8 py-3 text-lg w-full"
+            >
               Confirm order
             </button>
+            <OrderConfirmationModal
+              isOpen={isModalOpen}
+              onClose={handleCloseModal}
+              items={items}
+            />
           </div>
         </div>
       )}

@@ -15,7 +15,11 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        state.items.push({
+          ...action.payload,
+          quantity: 1,
+          image: action.payload.image,
+        });
       }
       // обновляем totalAmount при добавлении товара
       state.totalAmount = state.items
@@ -39,6 +43,10 @@ const cartSlice = createSlice({
       state.totalAmount = state.items
         .reduce((acc, item) => acc + item.price * item.quantity, 0)
         .toFixed(2);
+    },
+    clearCart(state) {
+      state.items = [];
+      state.totalAmount = 0;
     },
   },
 });

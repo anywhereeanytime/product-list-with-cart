@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem } from "./../cartSlice";
 import emptyCartImg from "./../../assets/images/illustration-empty-cart.svg";
@@ -7,9 +7,9 @@ import carbonNeutralIcon from "./../../assets/images/icon-carbon-neutral.svg";
 import OrderConfirmationModal from "./OrderConfirmationModal";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-  const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../cartSlice";
 import orderConfirmedIcon from "./../../assets/images/icon-order-confirmed.svg";

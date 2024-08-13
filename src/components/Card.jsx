@@ -14,10 +14,10 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
     state.cart.items.some((item) => item.id === id)
   );
 
-  // Создаем состояние для количества элементов в корзине
+  // Состояние для количества элементов в корзине
   const [quantity, setQuantity] = useState(1);
 
-  // Обработчик добавления в корзину
+  // Добавить в корзину
   const handleAddToCart = () => {
     const numericPrice = parseFloat(price.replace("$", "")); // Преобразуем цену в число
 
@@ -30,7 +30,7 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
     dispatch(addItem({ id, image, subtitle, maintitle, price: numericPrice }));
   };
 
-  // Обработчик удаления из корзины
+  // Удалить из корзины
   const handleRemoveFromCart = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);

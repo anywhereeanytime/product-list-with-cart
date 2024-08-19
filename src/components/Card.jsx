@@ -12,7 +12,7 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
   // Определяем, добавлен ли товар в корзину
   const isAdded = useSelector((state) =>
     state.cart.items.some((item) => item.id === id)
-  );
+  ); //Добавили товар, значит нужно поменять UI этого товара
 
   // Состояние для количества элементов в корзине
   const [quantity, setQuantity] = useState(1);
@@ -22,12 +22,12 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
     const numericPrice = parseFloat(price.replace("$", "")); // Преобразуем цену в число
 
     if (!isAdded) {
-      setQuantity(1);
+      setQuantity(1); //Если товар добавляют впервые, устанавливается значение 1
     } else {
-      setQuantity((prevQuantity) => prevQuantity + 1);
+      setQuantity((prevQuantity) => prevQuantity + 1); //Если товар добавляли ранее, то кол-во увеличивается на +1
     }
 
-    dispatch(addItem({ id, image, subtitle, maintitle, price: numericPrice }));
+    dispatch(addItem({ id, image, subtitle, maintitle, price: numericPrice })); //Отправляем action.payload добавленного товара в корзину
   };
 
   // Удалить из корзины
@@ -35,7 +35,7 @@ const Card = ({ id, image, subtitle, maintitle, price }) => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     } else {
-      setQuantity(1); // Минимальное количество — 1
+      setQuantity(1);
     }
     dispatch(removeItem({ id }));
   };

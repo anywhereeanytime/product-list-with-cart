@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem } from "./../cartSlice";
-import emptyCartImg from "./../../assets/images/illustration-empty-cart.svg";
-import removeItemIcon from "./../../assets/images/icon-remove-item.svg";
-import carbonNeutralIcon from "./../../assets/images/icon-carbon-neutral.svg";
+import emptyCartImg from "/images/illustration-empty-cart.svg";
+import removeItemIcon from "/images/icon-remove-item.svg";
+import carbonNeutralIcon from "/images/icon-carbon-neutral.svg";
 import OrderConfirmationModal from "./OrderConfirmationModal";
 
 const Cart = () => {

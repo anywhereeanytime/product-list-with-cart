@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../cartSlice";
-import orderConfirmedIcon from "./../../assets/images/icon-order-confirmed.svg";
+import orderConfirmedIcon from "/images/icon-order-confirmed.svg";
 
 const OrderConfirmationModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();

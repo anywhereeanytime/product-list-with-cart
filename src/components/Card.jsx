@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "./../cartSlice";
-import cartIcon from "./../../assets/images/icon-add-to-cart.svg";
-import iconIncrement from "./../../assets/images/icon-increment-quantity.svg";
-import iconDecrement from "./../../assets/images/icon-decrement-quantity.svg";
-import "./../../src/index.css";
+import cartIcon from "/images/icon-add-to-cart.svg";
+import iconIncrement from "/images/icon-increment-quantity.svg";
+import iconDecrement from "/images/icon-decrement-quantity.svg";
+import "/src/index.css";
 
 const Card = ({ id, image, subtitle, maintitle, price }) => {
   const dispatch = useDispatch();

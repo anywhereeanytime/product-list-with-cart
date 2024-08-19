@@ -1,5 +1,5 @@
 ## Live Demo
-Check out the live demo of Desserts shop at .
+Check out the live demo of Desserts shop at [this link](https://desserts-shop.netlify.app).
 
 ## Screenshots
 ![Main page](https://imgur.com/YE3gzNq.png)

@@ -8,5 +8,6 @@ Check out the live demo of Desserts shop at .
 
 ## Features
 
-- You can create a wonderful safe password
-- Please enjoy this website and have a good day 🌼
+- You can almost order your favourite desserts. If only I could be a baker...
+
+React, Redux, Tailwind

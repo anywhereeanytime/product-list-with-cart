@@ -1,8 +1,12 @@
-# React + Vite
+## Live Demo
+Check out the live demo of Desserts shop at .
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Screenshots
+![Main page](https://imgur.com/YE3gzNq.png)
+![Main page](https://imgur.com/V928PG7.png)
+![Main page](https://imgur.com/q6dQyiz.png)
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- You can create a wonderful safe password
+- Please enjoy this website and have a good day 🌼
